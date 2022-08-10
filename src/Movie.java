@@ -1,4 +1,4 @@
-//Movìe는 간단한 비디오 데이터 클래스다
+// Movìe 간단한 비디오 데이터 클래스다
 
 public class Movie {
 
