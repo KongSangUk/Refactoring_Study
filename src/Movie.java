@@ -11,6 +11,14 @@ public class Movie {
         public Movie(String title, int priceCode) {
             _title = title;
             _priceCode = priceCode;
-
         }
+        public int getpriceCode() {
+            return _priceCode;
+        }
+        public void setpriceCode(int arg) {
+            _priceCode = arg;
+        }
+        public String gettitle() {
+            return _title;
+        };
     }
