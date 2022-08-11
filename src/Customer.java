@@ -40,11 +40,9 @@ public class Customer {
                     each.getDaysRented() > 1) frequentRenterPoints++;
 
             //이번에 대여하는 비디오 정보와 대여료 출출
-            result += "\t" + each.getMovie().getTitle() + "\t" +
-                    String.valueOf(thisAmount) + "\n";
-
-            //현재까지 누적된 총 대여료
-            totalAmount += thisAmount;
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf
+                    (each.getCharge()) + "\n";
+            totalAmount += each.getCharge();
         }
         result += "누적 대여료: " + String.valueOf(totalAmount) + "\n";
         result += "적립 포인트: " + String.valueOf(frequentRenterPoints);
