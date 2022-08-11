@@ -22,15 +22,41 @@ public class Customer {
     //
     public String statement() {
         double totalAmount = 0;
-        int ftequentRenterPoints = 0;
+        int frequentRenterPoints = 0;
         Enumeration rentals = _rentals.elements();
         String result = getName() + "고객님의 대여 기록/n";
         while (rentals.hasMoreElements()) {
             double thisAmount = 0;
             Rental each = (Rental) rentals.nextElement();
 
-            //비디오 종류별 대려료
-            // 전
+            //비디오 종류별 대려료 후
+            thisAmount = each.getCharge();
+
+            // 적립 포인트를 1 포인트 증가
+            frequentRenterPoints++;
+
+            // 최신물을 이틍 이상 대여하면 보너스 포인트 지급
+            if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
+                    each.getDaysRented() > 1) frequentRenterPoints++;
+
+            //이번에 대여하는 비디오 정보와 대여료 출출
+            result += "\t" + each.getMovie().getTitle() + "\t" +
+                    String.valueOf(thisAmount) + "\n";
+
+            //현재까지 누적된 총 대여료
+            totalAmount += thisAmount;
+        }
+        result += "누적 대여료: " + String.valueOf(totalAmount) + "\n";
+        result += "적립 포인트: " + String.valueOf(frequentRenterPoints);
+        return result;
+    }
+}
+
+
+
+//비디오 종류별 대려료 => 72 줄로 이동
+
+// 전
 //            switch (each.getMovie().getPriceCode()) {
 //                case Movie.REGULAR:
 //                    thisAmount += 2;
@@ -46,48 +72,25 @@ public class Customer {
 //                        thisAmount += (each.getDaysRented() - 3) * 1.5;
 //                    break;
 //            }
-            // 후
-            thisAmount = amountFor(each);
 
 
-            // 적립 포인트를 1 포인트 증가
-            ftequentRenterPoints++;
 
-            // 최신물을 이틍 이상 대여하면 보너스 포인트 지급
-            if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
-                    each.getDaysRented() > 1) ftequentRenterPoints++;
-
-            //이번에 대여하는 비디오 정보와 대여료 출출
-            result += "\t" + each.getMovie().getTitle() + "\t" +
-                    String.valueOf(thisAmount) + "\n";
-
-            //현재까지 누적된 총 대여료
-            totalAmount += thisAmount;
-        }
-        result += "누적 대여료: " + String.valueOf(totalAmount) + "\n";
-        result += "적립 포인트: " + String.valueOf(ftequentRenterPoints);
-        return result;
-    }
-
-    // 비디오 종류별 대려요 계산 기능을 빼내어 별도의 함수로 작성
-    public double amountFor(Rental aRental) {
-        double result = 0;
-        switch (aRental.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                result += 2;
-                if (aRental.getDaysRented() > 2)
-                    result += (aRental.getDaysRented() - 2) * 1.5;
-                break;
-            case Movie.NEW_RELEASE:
-                result += aRental.getDaysRented() * 3;
-                break;
-            case Movie.CHILDRENS:
-                result += 1.5;
-                if (aRental.getDaysRented() > 3)
-                    result += (aRental.getDaysRented() - 3) * 1.5;
-                break;
-        }
-        return result;
-    }
-
-}
+//    public double amountFor(Rental aRental) {
+//        double result = 0;
+//        switch (aRental.getMovie().getPriceCode()) {
+//            case Movie.REGULAR:
+//                result += 2;
+//                if (aRental.getDaysRented() > 2)
+//                    result += (aRental.getDaysRented() - 2) * 1.5;
+//                break;
+//            case Movie.NEW_RELEASE:
+//                result += aRental.getDaysRented() * 3;
+//                break;
+//            case Movie.CHILDRENS:
+//                result += 1.5;
+//                if (aRental.getDaysRented() > 3)
+//                    result += (aRental.getDaysRented() - 3) * 1.5;
+//                break;
+//        }
+//        return result;
+//    }
