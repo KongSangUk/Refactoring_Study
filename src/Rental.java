@@ -36,4 +36,14 @@ public class Rental {
         }
         return result;
     }
+
+    // 최신물을 이틀 이상 대여하연 2포인트 지급하고 그 외엔 1포인트 지급하는 코드를
+    // 빼내 getFrequentRenterPoints 에서드로 만들고 이 Rental 클래스로 옮김
+    int getFrequentRenterPoints() {
+        if ((getMovie().getPriceCode() == Movie.REGULAR) &&
+                getDaysRented() > 1)
+            return 2;
+        else
+            return 1;
+    }
 }
