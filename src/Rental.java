@@ -8,7 +8,7 @@ public class Rental {
         _movie = movie;
         _daysRented = daysRented;
     }
-    public int getdaysRented() {
+    public int getDaysRented() {
         return _daysRented;
     }
     public Movie getmovie() {
