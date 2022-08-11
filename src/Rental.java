@@ -11,7 +11,7 @@ public class Rental {
     public int getDaysRented() {
         return _daysRented;
     }
-    public Movie getmovie() {
+    public Movie getMovie() {
         return _movie;
     }
 }

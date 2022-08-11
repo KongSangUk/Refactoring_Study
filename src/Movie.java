@@ -12,13 +12,13 @@ public class Movie {
             _title = title;
             _priceCode = priceCode;
         }
-        public int getpriceCode() {
+        public int getPriceCode() {
             return _priceCode;
         }
         public void setpriceCode(int arg) {
             _priceCode = arg;
         }
-        public String gettitle() {
+        public String getTitle() {
             return _title;
         };
     }
