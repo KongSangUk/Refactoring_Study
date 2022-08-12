@@ -32,6 +32,8 @@ public class Customer {
                     String.valueOf(each.getCharge()) + "\n";
         }
 
+
+
         result += "누적 대여료: " + String.valueOf(getTotalCharge()) + "\n";
         result += "적립 포인트: " + String.valueOf(getTotalFrequentRenterPoints());
         return result;
