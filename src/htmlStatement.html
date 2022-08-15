@@ -1,6 +1,6 @@
 public String htmlStatement() {
-  Enumeration rentals _rentals.elements();
-  String result = "<H1><EM>" + getName() + " 고객님의 대여 기록</EM></Hl><P>\n";
+  Enumeration rentals = _rentals.elements();
+  String result = "<H1><EM>" + getName() + " 고객님의 대여 기록</EM></H1><P>\n";
     while (rentals.hasMoreElements()) {
       Rental each (Rental) rentals.nextElement();
 
