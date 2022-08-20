@@ -51,7 +51,6 @@ public class Customer {
 
 }
 
-
 //비디오 종류별 대려료 => 72 줄로 이동
 
 // 전
